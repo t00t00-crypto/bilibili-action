@@ -1,14 +1,17 @@
 name: 签到
 
-on:
+on: 
+  release:
+    types: [published]
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
   schedule:
-    - cron: 0 22,14 * * *
+    - cron: "0 */6 * * *"
   watch:
-    types: started
+    types: [started]
 
 jobs:
   build:
